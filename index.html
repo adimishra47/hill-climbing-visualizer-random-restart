@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hill Climbing with Random Restarts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Hill Climbing with Random Restarts</h1>
+  </header>
+
+  <main>
+    <section class="card controls">
+      <label>Random Restarts:
+        <input type="range" id="restartsInput" min="1" max="10" value="5">
+        <b id="restartsValue">5</b>
+      </label>
+      <label>Speed:
+        <input type="range" id="speedInput" min="1" max="5" value="2">
+        <b id="speedValue">2x</b>
+      </label>
+      <div class="buttons">
+        <button id="playBtn">▶ Play</button>
+        <button id="pauseBtn">⏸ Pause</button>
+        <button id="backBtn">⏮ Step Back</button>
+        <button id="forwardBtn">⏭ Step Forward</button>
+        <button id="resetBtn">⟲ Reset</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <canvas id="canvas" width="900" height="380"></canvas>
+      <div class="legend">
+        <span id="restartLegend"></span>
+        <span>● Current position</span>
+        <span>○ Start</span>
+        <span>■ End (stuck)</span>
+        <span>▲ Local maximum</span>
+        <span>★ Global maximum</span>
+        <span>Gold glow = best path so far</span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Algorithm Status</h2>
+        <p>Restart: <b id="stRestart"></b></p>
+        <p>Position: <b id="stPos"></b></p>
+        <p>Fitness: <b id="stFit"></b></p>
+        <p>Status: <b id="stStatus"></b></p>
+      </section>
+      <section class="card">
+        <h2>Frontier (neighbors)</h2>
+        <ul id="frontierList"></ul>
+      </section>
+      <section class="card">
+        <h2>Visited (this attempt)</h2>
+        <div id="visitedList"></div>
+      </section>
+      <section class="card">
+        <h2>Performance Statistics</h2>
+        <p>Total restarts: <b id="sRestarts"></b></p>
+        <p>Nodes expanded: <b id="sExpanded"></b></p>
+        <p>Fitness evaluations: <b id="sEvals"></b></p>
+        <p>Best fitness found: <b id="sBestFit"></b></p>
+        <p>Best position found: <b id="sBestPos"></b></p>
+        <p>True global maximum: <b id="sGlobal"></b></p>
+        <p>Execution time: <b id="sTime"></b></p>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>Comparison Table</h2>
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr><th>Restart</th><th>Start</th><th>Final</th><th>Final Fitness</th>
+                <th>Nodes Expanded</th><th>Path Length</th><th>Result</th></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Why does Hill Climbing get stuck?</h2>
+      <p>Hill Climbing only looks at nearby positions and moves to the best one if it is strictly better.
+         On a landscape with many peaks, an attempt can reach the top of a small hill where every neighbor
+         is lower. That is a <b>local maximum</b>, and the algorithm stops even though a higher peak exists elsewhere.</p>
+      <p><b>Random restarts</b> repeat the climb from different random starting points, so different attempts
+         can end on different peaks. We keep the best result. This improves the chance of finding a better
+         solution, but it does <b>not</b> guarantee the global maximum.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
