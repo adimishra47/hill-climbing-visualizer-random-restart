@@ -27,7 +27,7 @@ for (let x = X_MIN; x <= X_MAX; x++) {
         localMaxima.push(x);
 }
 
-//Hill Climbing Code
+//Hill Climbing Code --- Main Section
 function runHillClimbing(numRestarts) {
     const startTime = performance.now();
     const steps = [], summaries = [];
