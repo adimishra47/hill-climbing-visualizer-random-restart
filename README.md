@@ -1,4 +1,4 @@
-# Hill Climbing with Random Restarts Visualizer
+# Hill Climbing Visualizer with Random Restarts
 
 An interactive, animated visualizer that shows how **Hill Climbing** gets trapped at local maxima on a rugged landscape, and how **Random Restarts** help different attempts reach different peaks so the best result can be kept.
 
