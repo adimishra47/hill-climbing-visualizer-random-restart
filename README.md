@@ -1,11 +1,10 @@
-# hill-climbing-visualizer
 # Hill Climbing with Random Restarts Visualizer
 
 An interactive, animated visualizer that shows how **Hill Climbing** gets trapped at local maxima on a rugged landscape, and how **Random Restarts** help different attempts reach different peaks so the best result can be kept.
 
 Built with plain HTML, CSS and JavaScript (Canvas). No libraries, no build step.
 
-**Live demo:** _add your Vercel link here_
+**Live demo:** https://hill-climbing-visualizer-random-restart.vercel.app/
 
 ## Features
 
